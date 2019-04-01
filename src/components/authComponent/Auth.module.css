@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css?family=Anton');
+* {box-sizing: border-box;}
+
+.appWrapper{
+  background-image: url(./images/doctor2.jpg);
+  background-size: cover;
+}
+
+h1,h3{
+  font-family: 'Anton', sans-serif;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px black, 0 0 1em black;
+  color:#1762EE;
+}
+
+h1{
+  font-size: 42px;
+}
+.content{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items:center;
+  height: 100vh;
+ 
+}
+.form{
+  width: 35%;
+  background: linear-gradient(to right bottom,rgba(115, 211, 240, 0.5),rgba(228, 208, 226, 0.5));
+}
+
+
+.form{
+  animation-name: slideRight;
+  -webkit-animation-name: slideRight; 
+
+  animation-duration: 2s; 
+  -webkit-animation-duration: 2s;
+
+  animation-timing-function: ease-in-out; 
+  -webkit-animation-timing-function: ease-in-out;     
+
+  visibility: visible !important; 
+}
+
+@keyframes slideRight {
+  0% {
+      transform: translateX(-150%);
+  }
+  50%{
+      transform: translateX(8%);
+  }
+  65%{
+      transform: translateX(-4%);
+  }
+  80%{
+      transform: translateX(4%);
+  }
+  95%{
+      transform: translateX(-2%);
+  }           
+  100% {
+      transform: translateX(0%);
+  }   
+}
+
+@-webkit-keyframes slideRight {
+  0% {
+      -webkit-transform: translateX(-150%);
+  }
+  50%{
+      -webkit-transform: translateX(8%);
+  }
+  65%{
+      -webkit-transform: translateX(-4%);
+  }
+  80%{
+      -webkit-transform: translateX(4%);
+  }
+  95%{
+      -webkit-transform: translateX(-2%);
+  }           
+  100% {
+      -webkit-transform: translateX(0%);
+  }
+}
+
+.text{
+    animation-name: slideLeft;
+    -webkit-animation-name: slideLeft;  
+ 
+    animation-duration: 2s; 
+    -webkit-animation-duration: 2s;
+ 
+    animation-timing-function: ease-in-out; 
+    -webkit-animation-timing-function: ease-in-out;     
+ 
+    visibility: visible !important; 
+}
+ 
+@keyframes slideLeft {
+    0% {
+        transform: translateX(150%);
+    }
+    50%{
+        transform: translateX(-8%);
+    }
+    65%{
+        transform: translateX(4%);
+    }
+    80%{
+        transform: translateX(-4%);
+    }
+    95%{
+        transform: translateX(2%);
+    }           
+    100% {
+        transform: translateX(0%);
+    }
+}
+ 
+@-webkit-keyframes slideLeft {
+    0% {
+        -webkit-transform: translateX(150%);
+    }
+    50%{
+        -webkit-transform: translateX(-8%);
+    }
+    65%{
+        -webkit-transform: translateX(4%);
+    }
+    80%{
+        -webkit-transform: translateX(-4%);
+    }
+    95%{
+        -webkit-transform: translateX(2%);
+    }           
+    100% {
+        -webkit-transform: translateX(0%);
+    }
+}
