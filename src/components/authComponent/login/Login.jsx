@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import styles from './Login.module.css'
 import { Link } from 'react-router-dom';
+import { connect} from 'react-redux';
+import { loginUser } from '../../../actions/authAction'
 
 class Login extends Component{
 
@@ -18,7 +20,12 @@ class Login extends Component{
 
     onChange(e){
         this.setState({[e.target.name]:e.target.value})
-        console.log(this)
+    }
+
+    componentWillReceiveProps(nextProps){
+        if(nextProps.uath.isAuthentificated){
+            this.props.history.push('/dashbord')
+        }
     }
 
     onSubmit(e){
@@ -29,7 +36,7 @@ class Login extends Component{
             password: this.state.password
         }
 
-        console.log(user)
+        this.props.loginUser(user)
     }
 
     render(){
@@ -37,7 +44,7 @@ class Login extends Component{
             <form className={styles.transparent} onSubmit={this.onSubmit}>
                 <div className={styles.formInner}>
                     <h3>Авторизация</h3>
-                    <label for="username">Email</label>
+                    <label htmlFor="username">Email</label>
                     <input 
                         type="text"
                         id="username"
@@ -45,7 +52,7 @@ class Login extends Component{
                         value={this.state.email}
                         onChange={this.onChange}
                         />
-                    <label for="password">Пароль</label>
+                    <label htmlFor="password">Пароль</label>
                     <input
                         id="password"
                         type="password"
@@ -60,5 +67,9 @@ class Login extends Component{
     }
 }
 
+const mapStsteToProps=(state)=>({
+    auth:state.auth
+})
 
- export default Login;
+
+ export default connect(mapStsteToProps,{loginUser})(Login);

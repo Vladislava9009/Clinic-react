@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import styles from './Registration.module.css'
+import styles from './Registration.module.css';
 import {Link} from 'react-router-dom';
-import axios from 'axios'
-
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { registerUser } from '../../../actions/authAction'
 class Registration extends Component{
     constructor(){
         super();
@@ -10,7 +11,11 @@ class Registration extends Component{
             name:'',
             email:'',
             password:'',
-            errors:{}
+            errors:{
+                name:'',
+                email:'',
+                password:''
+            }
         }
 
         this.onChange=this.onChange.bind(this)
@@ -19,6 +24,17 @@ class Registration extends Component{
 
     onChange(e){
         this.setState({[e.target.name]:e.target.value})
+
+        // const { name,value}=e.target;
+        // let formErrors=this.state.errors;
+        
+
+        // switch (name){
+        //     case 'name':
+        //     formErrors.name=value.length<3
+        //     ? "минимум 3 символа" :'';
+        // }
+
     }
 
     onSubmit(e){
@@ -29,8 +45,8 @@ class Registration extends Component{
             email: this.state.email,
             password: this.state.password
         }
-        axios.post('https://localHost:3000/auth/register', newUser)
-                .then(res=> console.log(res.data))
+
+        this.props.registerUser(newUser, this.props.history)
                    
         
     }
@@ -40,7 +56,7 @@ class Registration extends Component{
             <form className={styles.transparent} onSubmit={this.onSubmit}>
                 ` <div className={styles.formInner}>
                         <h3>Регистрация</h3>
-                        <label for="username">Имя пользователя</label>
+                        <label htmlFor="username">Имя пользователя</label>
                         <input 
                             type="text"
                             id="username"
@@ -48,7 +64,7 @@ class Registration extends Component{
                             value={this.state.name}
                             onChange={this.onChange}
                             />
-                        <label for="email">Email</label>
+                        <label htmlFor="email">Email</label>
                         <input 
                             type="text"
                             id="email"
@@ -56,7 +72,7 @@ class Registration extends Component{
                             value={this.state.email}
                             onChange={this.onChange}
                             />
-                        <label for="password">Пароль</label>
+                        <label htmlFor="password">Пароль</label>
                         <input
                             id="password"
                             type="password"
@@ -64,7 +80,7 @@ class Registration extends Component{
                             value={this.state.password}
                             onChange={this.onChange}
                             />
-                        <Link to="/">Уже есть аккаунт</Link>
+                        <Link to="/login">Уже есть аккаунт</Link>
                         <input type="submit" value="Отправить"></input>
                     </div>
             </form> 
@@ -73,6 +89,8 @@ class Registration extends Component{
 
 }
 
+const mapStateToProps =(state)=>({
+    auth:state.auth
+})
 
-
-export default Registration
+export default connect(mapStateToProps,{registerUser})(withRouter(Registration))

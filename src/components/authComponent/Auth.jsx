@@ -1,6 +1,5 @@
 import React from 'react';
-import {Router, Route, Link} from 'react-router-dom';
-import createHistory from "history/createBrowserHistory"
+import {Route} from 'react-router-dom';
 import styles from './Auth.module.css';
 import Registration from './registration/Registration';
 import Login from './login/Login';
@@ -11,7 +10,7 @@ const Auth=()=>{
             <section className={styles.content}>
                 <div className={styles.form}>
                     <Route path='/registration' component={Registration}/>
-                    <Route path='/' component={Login} exact/>
+                    <Route path='/login' component={Login} exact/>
                 </div> 
                 <div className={styles.text}>
                     <h1>Медецинский центр</h1>
