@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import styles from './Login.module.css'
 import { Link } from 'react-router-dom';
-import { connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { loginUser } from '../../../actions/authAction'
 
 class Login extends Component{
@@ -36,7 +36,7 @@ class Login extends Component{
             password: this.state.password
         }
 
-        this.props.loginUser(user)
+        this.props.loginUser(user,this.props.history)
     }
 
     render(){
@@ -59,7 +59,7 @@ class Login extends Component{
                         name="password"
                         value={this.state.password}
                         onChange={this.onChange}></input>
-                    <Link to="/registration">Зарегестрироваться</Link>
+                    <Link to="/auth/registration">Зарегестрироваться</Link>
                     <input type="submit" value="Отправить"></input>
                 </div>
             </form> 

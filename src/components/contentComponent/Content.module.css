@@ -1,0 +1,8 @@
+.reception{
+    display: flex;
+    justify-content: center;
+}
+.yourVisits, .map , .datePicker{
+    width: 30%;
+    border:1px solid black;
+}

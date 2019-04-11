@@ -1,31 +1,30 @@
 import React, { Component } from 'react';
-import {Router} from 'react-router-dom';
+import {BrowserRouter,Route, Switch,Redirect} from 'react-router-dom';
 import createHistory from "history/createBrowserHistory"
 import {Provider} from 'react-redux';
 import store from './store/store'
-import { setCurrentUser} from './actions/authAction';
 
 import './App.css';
 import Auth from './components/authComponent/Auth'
+import DashBord from './layout/dashbordPage/DashBord'
 
 
-// if(localStorage.user){
 
-//   const decoded = JSON.parse(localStorage.getItem('user')).user
-//   store.dispatch(decoded)
-// }
 
 class App extends Component {
   render() {
+    // <Redirect to='/auth'/>
     return (
       <Provider store={store}>
-          <Router history = {createHistory()}>
+          <BrowserRouter history = {createHistory()}>
            <div>
-            <Auth/>
+             <Switch>
+                <Route path='/auth' component={Auth} />
+                <Route path='/dashbord' component={DashBord} exact/>
+             </Switch> 
           </div>
-          </Router>
+          </BrowserRouter>
       </Provider>
-      
     );
   }
 }

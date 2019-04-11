@@ -80,7 +80,7 @@ class Registration extends Component{
                             value={this.state.password}
                             onChange={this.onChange}
                             />
-                        <Link to="/login">Уже есть аккаунт</Link>
+                        <Link to="/auth/login">Уже есть аккаунт</Link>
                         <input type="submit" value="Отправить"></input>
                     </div>
             </form> 
