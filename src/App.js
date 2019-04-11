@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
-import {BrowserRouter,Route, Switch,Redirect} from 'react-router-dom';
+import {BrowserRouter,Route, Switch} from 'react-router-dom';
 import createHistory from "history/createBrowserHistory"
 import {Provider} from 'react-redux';
 import store from './store/store'
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
+
 
 import './App.css';
 import Auth from './components/authComponent/Auth'
 import DashBord from './layout/dashbordPage/DashBord'
 
 
-
+library.add(faStroopwafel)
 
 class App extends Component {
   render() {
