@@ -1,8 +1,26 @@
+.paragraf, .paragraf2{
+    width: 670px;
+    height: 460px;
+    margin-top: 6%;
+    text-align: center;
+    box-sizing: border-box;
+    box-shadow: 0 10px 15px 1px rgba(121, 117, 117, 0.7);
+    background-color: #f6fcff; 
+}
 .reception{
-    display: flex;
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: row;
     justify-content: center;
 }
-.yourVisits, .map , .datePicker{
-    width: 30%;
-    border:1px solid black;
+.paragraf2{
+    margin-left: -40px;
+    margin-top: 22px;
 }
+.reception div:nth-child(3) {
+    z-index: 2;
+    }
+.text{
+    text-align: center;
+}
+

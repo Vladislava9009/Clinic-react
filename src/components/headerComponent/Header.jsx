@@ -1,6 +1,7 @@
 import React from 'react';
 import { Component } from 'react';
 import logo from "../../images/hart2.png"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { logoutUser } from '../../actions/authAction'
 import { connect } from 'react-redux';
@@ -27,6 +28,8 @@ class Header extends Component{
                 <header>
                     <img src={logo} alt="logo"></img>
                     <div className={styles.logOut}>
+                       <FontAwesomeIcon icon="phone" />
+                        <p> (095)0044004</p>
                         <button onClick={this.onLogoutUser}>Выйти</button>
                     </div>
                 </header>

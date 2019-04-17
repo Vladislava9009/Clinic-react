@@ -2,7 +2,7 @@ import React from 'react';
 import { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-
+import styles from './YourVisits.module.css';
 
 
 
@@ -11,8 +11,8 @@ class YourVisits extends Component{
 
     render(){
         return(
-            <div>
-                <FontAwesomeIcon icon=" fas fa-notes-medical" />
+            <div className={styles.online}>
+                <FontAwesomeIcon icon="phone" />
                     <h4>Предстоящие записи</h4>
                     <ul>
                         <li>Запись</li>

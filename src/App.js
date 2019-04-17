@@ -5,8 +5,8 @@ import {Provider} from 'react-redux';
 import store from './store/store'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
+
+import { faStroopwafel,faPhone } from '@fortawesome/free-solid-svg-icons'
 
 
 import './App.css';
@@ -14,7 +14,7 @@ import Auth from './components/authComponent/Auth'
 import DashBord from './layout/dashbordPage/DashBord'
 
 
-library.add(faStroopwafel)
+library.add(faStroopwafel,faPhone)
 
 class App extends Component {
   render() {

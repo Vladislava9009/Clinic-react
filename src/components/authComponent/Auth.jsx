@@ -11,7 +11,7 @@ import styles from './Auth.module.css';
 class Auth extends Component{
     render(){
         if(localStorage.user){
-            const decoded = JSON.parse(localStorage.getItem('user')).user
+            
             return <Redirect to='/dashbord'/>
           } 
           

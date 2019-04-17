@@ -55,7 +55,8 @@ class Registration extends Component{
         const newUser={
             fullName: this.state.name,
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
+            appointment:{}
         }
 
         this.props.registerUser(newUser, this.props.history)
