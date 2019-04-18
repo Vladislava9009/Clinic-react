@@ -1,7 +1,7 @@
 import axios from 'axios';
-// import {SET_CURRENT_USER} from './types'
+import {SET_USERS_APPOINTMENTS} from './types'
 
-export const addAppointmetn =(date,id,dateForAppointment,appointments)=>dispatch=>{
+export const addAppointmetn =(date,id,dateForAppointment)=>dispatch=>{
     if(new Date(date)<new Date()){
         alert('Дата для записи не может быть меньше текущей')
       }else{
@@ -19,8 +19,17 @@ export const addAppointmetn =(date,id,dateForAppointment,appointments)=>dispatch
                         alert('Запись на прием успешно добавлена')
                     });
                 axios
-                  .put(`https://localhost:3000/auth/profile/`+id,appointments )
-                  .then(res=>console.log(res.data))
+                    .get(`https://localhost:3000/auth/profile/`+id )
+                    .then(res=>{const appoint=res.data.appointment
+                                const appoint2= appoint.push(new Date(date))
+                                axios
+                                    .put(`https://localhost:3000/auth/profile/`+id,{appointment:appoint} )
+                                    .then(res=>dispatch({
+                                      type:SET_USERS_APPOINTMENTS,
+                                      payload:res.data.appointment
+                                  }))
+                                }    
+                        )
               }else{
                 alert('К сожалению текущая дата и время заняты, попробуйт записаться на час позже')
               }
@@ -28,4 +37,21 @@ export const addAppointmetn =(date,id,dateForAppointment,appointments)=>dispatch
       }
 }
 
-export const listOfAppointments=()=>{}
+export const getCurrentUser=(id)=>dispatch=>{
+    axios
+        .get(`https://localhost:3000/auth/profile/`+id )
+        .then(res=>{console.log(res.data) }
+                    )}
+
+
+export const getAppoimments=(id)=>dispatch=>{
+  axios
+        .get(`https://localhost:3000/auth/profile/`+id)
+      .then(res=>{
+        dispatch({
+            type:SET_USERS_APPOINTMENTS,
+            payload:res.data.appointment
+        })}
+                    )
+  
+}

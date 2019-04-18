@@ -28,8 +28,8 @@ class Header extends Component{
                 <header>
                     <img src={logo} alt="logo"></img>
                     <div className={styles.logOut}>
-                       <FontAwesomeIcon icon="phone" />
-                        <p> (095)0044004</p>
+                       {/* <FontAwesomeIcon icon="phone" />
+                        <p> (095)0044004</p> */}
                         <button onClick={this.onLogoutUser}>Выйти</button>
                     </div>
                 </header>

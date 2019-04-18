@@ -3,6 +3,7 @@ header{
     display:flex;
     justify-content: space-between;
     padding: 0% 1%; 
+    background-color: #f6fcff;
 }
 img{
   max-width:100%;
@@ -10,8 +11,8 @@ img{
 }
 hr {
     height: 2px;
-    color: blue;
-    background:blue;
+    color: rgb(96, 96, 99);
+    background:rgb(96, 96, 99);
     font-size: 0;
     border: 0;
 }

@@ -17,7 +17,7 @@ class DateTimePicker extends Component {
       hour: '10',
       minute: '00',
       second: '00',
-      meridiem: 'PM'
+      meridiem: 'AM'
     };
     this.onSubmit=this.onSubmit.bind(this)
   }
@@ -108,18 +108,12 @@ class DateTimePicker extends Component {
     const dateForAppointment={
       title:new Date(date)
     }
-    const appointments={
-      appointment:dateForAppointment
-    }
+    
 
     const id=JSON.parse(localStorage.getItem('user')).user._id
     
-    this.props.addAppointmetn(date,id,dateForAppointment,appointments)
+    this.props.addAppointmetn(date,id,dateForAppointment)
 
-    
-
-    
-   
   }
   
   render() {
