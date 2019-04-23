@@ -1,0 +1,29 @@
+.form{
+    text-align: justify;
+    margin-top: 7%;
+}
+.settings{
+    width: 80%;
+    margin:0 10%;
+}
+
+.line{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2%;
+}
+.line input{
+    border-radius: 10px;
+    /* width: 40%; */
+    height: 30px;
+}
+.form button{
+    margin-top: 10%;
+}
+.line p{
+    text-decoration: underline;
+}
+.settings h4{
+    border: 1px solid black;
+    padding: 2%;
+}

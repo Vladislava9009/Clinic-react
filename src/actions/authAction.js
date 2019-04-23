@@ -20,7 +20,7 @@ export const loginUser=(userData, history)=>dispatch=>{
         .post('https://localHost:3000/auth/login',userData)
         .then(res=>{
            const user= res.data;
-            localStorage.setItem( 'user',JSON.stringify(user));
+            localStorage.setItem( 'user',JSON.stringify(user.user));
             history.push('/auth/dashbord')
             return user
         })

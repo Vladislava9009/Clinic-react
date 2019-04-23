@@ -1,4 +1,5 @@
 import React, { Component} from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 class VisitItem extends Component{
@@ -7,7 +8,7 @@ class VisitItem extends Component{
         const date=new Date(this.props.appointent)
         date.toLocaleString("ru")
         return(
-            <li>{date.toLocaleString("ru")}</li>
+            <li> <FontAwesomeIcon icon="notes-medical" />   {date.toLocaleString("ru")}</li>
         )
     }
 }

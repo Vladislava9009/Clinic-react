@@ -110,7 +110,7 @@ class DateTimePicker extends Component {
     }
     
 
-    const id=JSON.parse(localStorage.getItem('user')).user._id
+    const id=JSON.parse(localStorage.getItem('user'))._id
     
     this.props.addAppointmetn(date,id,dateForAppointment)
 

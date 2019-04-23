@@ -11,7 +11,7 @@ import VisitItem from './YourVisitItem'
 
 class YourVisits extends Component{
     componentDidMount(){
-        const id=JSON.parse(localStorage.getItem('user')).user._id
+        const id=JSON.parse(localStorage.getItem('user'))._id
         this.props.getAppoimments(id);
     }
 
@@ -29,7 +29,7 @@ class YourVisits extends Component{
         }
         return(
             <div className={styles.online}>
-                <FontAwesomeIcon icon="phone" />
+                 
                     <h4>Предстоящие записи</h4>
                     
                     <ul>
@@ -46,3 +46,4 @@ const mapStateToProps=state=>({
 
 
 export default connect(mapStateToProps,{getAppoimments})(YourVisits)
+

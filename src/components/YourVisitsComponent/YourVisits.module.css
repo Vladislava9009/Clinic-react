@@ -1,3 +1,13 @@
 .online ul{
     text-align: left ;
 }
+.online h4{
+    border: 1px solid black;
+    padding: 2%;
+}
+.online{
+    margin: 2%
+}
+.online li{
+    padding:5px;
+}

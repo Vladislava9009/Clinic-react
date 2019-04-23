@@ -1,5 +1,7 @@
 import axios from 'axios';
 import {SET_USERS_APPOINTMENTS} from './types'
+import {SET_CURRENT_USER} from './types'
+
 
 export const addAppointmetn =(date,id,dateForAppointment)=>dispatch=>{
     if(new Date(date)<new Date()){
@@ -28,6 +30,7 @@ export const addAppointmetn =(date,id,dateForAppointment)=>dispatch=>{
                                       type:SET_USERS_APPOINTMENTS,
                                       payload:res.data.appointment
                                   }))
+                                  
                                 }    
                         )
               }else{
@@ -54,4 +57,17 @@ export const getAppoimments=(id)=>dispatch=>{
         })}
                     )
   
+}
+export const updateUser=(newUserData,id)=>dispatch=>{
+  axios
+      .put(`https://localhost:3000/auth/profile/`+id,newUserData )
+      .then(res=>{
+        const user= res.data;
+        // localStorage.clear()
+         localStorage.setItem( 'user',JSON.stringify(user));
+         dispatch({
+          type:SET_CURRENT_USER,
+          payload:res.data
+      })
+     })
 }
