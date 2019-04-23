@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import styles from './Login.module.css'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loginUser } from '../../../actions/authAction'
+import { loginUser } from '../../../actions/authAction';
+
+import ModalWindow from '../../ModalWindowComponent/ModalWindow'
 
 class Login extends Component{
 
@@ -23,7 +25,7 @@ class Login extends Component{
     }
 
     componentWillReceiveProps(nextProps){
-        if(nextProps.uath.isAuthentificated){
+        if(nextProps.auth.isAuthentificated){
             this.props.history.push('/dashbord')
         }
     }
@@ -42,6 +44,7 @@ class Login extends Component{
     render(){
         return (
             <form className={styles.transparent} onSubmit={this.onSubmit}>
+            { this.props.error.userFailed ? <ModalWindow user='пользователь' error={this.props.error.error}/> : null }
                 <div className={styles.formInner}>
                     <h3>Авторизация</h3>
                     <label htmlFor="username">Email</label>
@@ -68,7 +71,8 @@ class Login extends Component{
 }
 
 const mapStsteToProps=(state)=>({
-    auth:state.auth
+    auth:state.auth,
+    error:state.error
 })
 
 

@@ -5,6 +5,8 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { registerUser } from '../../../actions/authAction'
 
+import ModalWindow from '../../ModalWindowComponent/ModalWindow'
+
 const emailRegex= RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
 
 class Registration extends Component{
@@ -60,6 +62,7 @@ class Registration extends Component{
         }
 
         this.props.registerUser(newUser, this.props.history)
+        console.log(this.props)
                    
         
     }
@@ -68,6 +71,7 @@ class Registration extends Component{
         const {formErrors}=this.state
         return (
             <form noValidate className={styles.transparent} onSubmit={this.onSubmit}>
+            { this.props.error.userFailed ? <ModalWindow user='пользователь' error={this.props.error.error}/> : null }
                 ` <div className={styles.formInner}>
                         <h3>Регистрация</h3>
                         <label htmlFor="username">Имя пользователя</label>
@@ -123,7 +127,8 @@ class Registration extends Component{
 }
 
 const mapStateToProps =(state)=>({
-    auth:state.auth
+    auth:state.auth,
+    error:state.error
 })
 
 export default connect(mapStateToProps,{registerUser})(withRouter(Registration))

@@ -8,6 +8,7 @@ import clinic3 from "../../images/clinic3.JPG"
 import YourVisits from '../YourVisitsComponent/YourVisits'
 import DateTimePicker from '../DateTimePickerComponent/DateTimePicker'
 import YourSettings from '../YourSettingsComponent/YourSettings'
+import ModalWindow from '../ModalWindowComponent/ModalWindow'
 
 import { updateUser } from '../../actions/userAction'
 
@@ -28,6 +29,7 @@ class Content extends Component{
         const userName=JSON.parse(localStorage.getItem('user')).fullName
         return(
             <div className={styles.text}>
+			{ this.props.error.userFailed ? <ModalWindow user={userName} error={this.props.error.error}/> : null }
               <h4>Здравствуйте,{userName} !</h4>
               <p>В личном кабинете Вы можете записаться на прем и просмотреть предстоящие записи </p>
               <div className={styles.reception}>
@@ -55,7 +57,8 @@ class Content extends Component{
     }
 }
 const mapStateToProps =(state)=>({
-    auth:state.auth
+	auth:state.auth,
+	error:state.error
 })
 
 

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {SET_CURRENT_USER} from './types'
+import {SET_CURRENT_USER, SET_ERROR} from './types'
 
 export const registerUser =(userData, history)=>dispatch=>{
     axios
@@ -11,7 +11,12 @@ export const registerUser =(userData, history)=>dispatch=>{
                 .post('https://localHost:3000/auth/register', userData)
                 .then(res=> history.push('/auth/login'))
                 .catch(err=>console.log(err))
-            }else{ alert('Данный адресс почты уже зарегестрирован')}
+            }else{
+                dispatch({
+                type:SET_ERROR,
+                payload:'Данный адресс почты уже зарегестрирован'
+            }) 
+                }
         })
 }
 
@@ -27,9 +32,16 @@ export const loginUser=(userData, history)=>dispatch=>{
 
         .catch(err=>{
             switch (err.response.status){
-                case 400: alert('Пользователь не найден')
+                case 400:
+                        dispatch({
+                            type:SET_ERROR,
+                            payload:'Данный email в системе не зарегестрирован'
+                        })
                 break;
-                case 401: alert(' Пароль введен не верно')
+                case 401: dispatch({
+                    type:SET_ERROR,
+                    payload:'Пароль введен не верно'
+                })
                 break;
                 default: break
             }

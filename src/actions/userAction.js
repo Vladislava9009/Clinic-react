@@ -1,11 +1,14 @@
 import axios from 'axios';
 import {SET_USERS_APPOINTMENTS} from './types'
-import {SET_CURRENT_USER} from './types'
+import {SET_CURRENT_USER, SET_ERROR} from './types'
 
 
 export const addAppointmetn =(date,id,dateForAppointment)=>dispatch=>{
     if(new Date(date)<new Date()){
-        alert('Дата для записи не может быть меньше текущей')
+      dispatch({
+        type:SET_ERROR,
+        payload:'Дата для записи не может быть меньше текущей'
+        })
       }else{
         axios
             .get('https://localHost:3000/book/get')
@@ -18,7 +21,10 @@ export const addAppointmetn =(date,id,dateForAppointment)=>dispatch=>{
                 axios
                     .post('https://localHost:3000/book',dateForAppointment)
                     .then(res=>{
-                        alert('Запись на прием успешно добавлена')
+                      dispatch({
+                        type:SET_ERROR,
+                        payload:'Запись на прием успешно добавлена'
+                        })
                     });
                 axios
                     .get(`https://localhost:3000/auth/profile/`+id )
@@ -33,8 +39,10 @@ export const addAppointmetn =(date,id,dateForAppointment)=>dispatch=>{
                                   
                                 }    
                         )
-              }else{
-                alert('К сожалению текущая дата и время заняты, попробуйт записаться на час позже')
+              }else{dispatch({
+                type:SET_ERROR,
+                payload:'К сожалению текущая дата и время заняты, попробуйт записаться на час позже'
+                })
               }
             })
       }
