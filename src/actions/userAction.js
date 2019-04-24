@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {SET_USERS_APPOINTMENTS} from './types'
-import {SET_CURRENT_USER, SET_ERROR} from './types'
+import {SET_CURRENT_USER, SET_ERROR, REMOVE_ERROR} from './types'
 
 
 export const addAppointmetn =(date,id,dateForAppointment)=>dispatch=>{
@@ -78,4 +78,10 @@ export const updateUser=(newUserData,id)=>dispatch=>{
           payload:res.data
       })
      })
+}
+
+export const removeError=()=>dispatch=>{
+  dispatch({
+    type:REMOVE_ERROR,
+})
 }

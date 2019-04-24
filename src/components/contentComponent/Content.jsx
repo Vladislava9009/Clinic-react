@@ -29,6 +29,7 @@ class Content extends Component{
         const userName=JSON.parse(localStorage.getItem('user')).fullName
         return(
             <div className={styles.text}>
+			
 			{ this.props.error.userFailed ? <ModalWindow user={userName} error={this.props.error.error}/> : null }
               <h4>Здравствуйте,{userName} !</h4>
               <p>В личном кабинете Вы можете записаться на прем и просмотреть предстоящие записи </p>

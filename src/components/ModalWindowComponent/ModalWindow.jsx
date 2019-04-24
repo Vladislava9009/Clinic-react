@@ -1,5 +1,7 @@
 import React from 'react';
 import { Component } from 'react';
+import { removeError } from '../../actions/userAction';
+import { connect } from 'react-redux';
 
 import styles from './ModalWindow.module.css';
 
@@ -16,6 +18,7 @@ class ModalWindow extends Component{
         this.setState({
             open:false
         })
+        this.props.removeError()
         
     }
    render(){
@@ -39,5 +42,12 @@ class ModalWindow extends Component{
     )
    }
 } 
+const mapStateToProps=(state)=>({
+    auth:state.auth,
+    error:state.error
+})
 
-export default ModalWindow
+
+ export default connect(null,{removeError})(ModalWindow);
+// export default ModalWindow
+
